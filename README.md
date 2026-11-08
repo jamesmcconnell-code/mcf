@@ -13,5 +13,7 @@ The ledger is stored as JSON in the app's Application Support directory. Amounts
 - Custom categories and reassignment when deleting a category
 - Active and historical period reporting
 - Category spending charts and local JSON export
+- Optional Face ID, Touch ID, or device passcode app lock
+- iPhone-only distribution target
 
 No bank integrations or network services are used.

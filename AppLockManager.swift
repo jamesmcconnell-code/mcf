@@ -92,7 +92,7 @@ struct AppLockScreen: View {
             Button {
                 Task { await appLock.unlock() }
             } label: {
-                Label("Unlock with Face ID or passcode", systemImage: "faceid")
+                Label("Unlock with Face ID, Touch ID, or passcode", systemImage: "faceid")
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding(15)

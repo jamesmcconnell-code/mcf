@@ -299,7 +299,7 @@ struct SettingsView: View {
                 Button { showCategories = true } label: { Label("Expense categories", systemImage: "tag") }
             }
             Section("Security") {
-                Toggle("Require Face ID or passcode", isOn: Binding(
+                Toggle("Require Face ID, Touch ID, or passcode", isOn: Binding(
                     get: { appLock.isEnabled },
                     set: { enabled in
                         if enabled {
@@ -311,7 +311,7 @@ struct SettingsView: View {
                         }
                     }
                 ))
-                Text("Uses Face ID when available, with your device passcode as fallback. Authentication stays on this device.").font(.caption).foregroundStyle(.secondary)
+                Text("Uses Face ID or Touch ID when available, with your device passcode as fallback. Authentication stays on this device.").font(.caption).foregroundStyle(.secondary)
             }
             Section("Your data") {
                 Button { do { exportURL = try ledger.exportURL() } catch { exportError = true } } label: { Label("Export ledger backup", systemImage: "square.and.arrow.up") }
@@ -353,6 +353,7 @@ struct PrivacyPolicyView: View {
             }
             Section("Security") {
                 Text("The ledger file uses iOS Complete Data Protection. iOS stores it encrypted and makes it inaccessible to the app while the device is locked. An exported backup is outside the app’s protection, so choose a destination you trust.")
+                Text("Optional app lock uses Apple’s device authentication. Cash Flow does not receive or store Face ID or Touch ID data.")
             }
             Section("Contact") {
                 Link("jamesmcconnellemail@gmail.com", destination: URL(string: "mailto:jamesmcconnellemail@gmail.com")!)

@@ -19,6 +19,8 @@ iOS device backups may include app data according to your device backup settings
 
 The app’s ledger file uses iOS Complete Data Protection. iOS keeps the file encrypted on disk and makes it inaccessible to the app while the device is locked. An exported backup is outside the app’s protection; choose a destination you trust.
 
+Optional app lock uses Apple’s LocalAuthentication system. Cash Flow does not receive or store Face ID or Touch ID data.
+
 ## Retention and deletion
 
 Your ledger stays in the app until you delete it. Use **Settings → Delete all local data** to erase the ledger from the app, or delete Cash Flow from your device. This does not delete backups or copies you exported to another location; remove those separately.
