@@ -18,8 +18,9 @@
 
 - [ ] Ask Apple Developer Support whether Apple’s financial-app rule applies to this offline personal ledger. App Review Guideline 3.2.1(viii) mentions money-management apps.
 - [ ] Enroll in the Apple Developer Program and choose an individual or eligible organization account.
-- [ ] Replace `com.mcf.cashflow` with a Bundle ID you control before the first App Store upload.
-- [ ] Choose the final product name and seller identity.
+- [x] Set the Bundle ID to the user-provided `com.mcf.scoops`.
+- [x] Choose the public name Scoops and in-app brand Scoops Cash Flow.
+- [ ] Choose the seller identity for developer enrollment.
 - [ ] Confirm the support email is monitored and keep the contact details current.
 - [ ] Publish the privacy policy at a public URL and add the URL to App Store Connect.
 - [ ] Provide a public support URL with contact information.

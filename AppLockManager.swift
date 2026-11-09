@@ -53,7 +53,7 @@ final class AppLockManager: ObservableObject {
         isAuthenticating = true
         defer { isAuthenticating = false }
         do {
-            try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Unlock your cash flow information.")
+            try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Unlock your Scoops financial information.")
             isUnlocked = true
             errorMessage = nil
             return true
@@ -74,10 +74,10 @@ struct AppLockScreen: View {
         VStack(spacing: 18) {
             Image(systemName: "lock.fill")
                 .font(.system(size: 38, weight: .semibold))
-                .foregroundStyle(Color(hex: 0x286B58))
+                .foregroundStyle(Color(hex: 0x14203D))
                 .frame(width: 86, height: 86)
-                .background(Color(hex: 0xE8F2ED), in: Circle())
-            Text("Cash Flow is locked")
+                .background(Color(hex: 0xF4EBD5), in: Circle())
+            Text("Scoops is locked")
                 .font(.title2.bold())
             Text("Unlock to view your financial information.")
                 .font(.subheadline)
@@ -102,6 +102,6 @@ struct AppLockScreen: View {
         }
         .padding(30)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(hex: 0xF6F7F5).ignoresSafeArea())
+        .background(Color(hex: 0xFFFAEF).ignoresSafeArea())
     }
 }

@@ -11,13 +11,13 @@ struct SetupView: View {
         NavigationStack {
             Form {
                 Section {
-                    Text("Start with the cash you have available today. Paychecks and spending will be tracked separately from this starting amount.").font(.subheadline).foregroundStyle(.secondary)
+                    Text("Start with the cash you have available today. Paychecks and scoops will be tracked separately from this starting amount.").font(.subheadline).foregroundStyle(.secondary)
                     HStack { Text("Opening cash"); Spacer(); TextField("0.00", text: $opening).keyboardType(.decimalPad).multilineTextAlignment(.trailing) }
                     Picker("Currency", selection: $currency) { ForEach(currencies, id: \.self) { Text($0).tag($0) } }
-                } header: { Text("Your starting point") }
+        } header: { Text("Your starting point") }
                 if let error { Text(error).foregroundStyle(.red).font(.caption) }
             }
-            .navigationTitle("Set up Cash Flow")
+        .navigationTitle("Set up Scoops")
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Get started") { save() }.fontWeight(.semibold) } }
             .interactiveDismissDisabled()
         }
@@ -71,7 +71,7 @@ struct TransactionFormView: View {
                 }
                 if let error { Text(error).foregroundStyle(.red).font(.caption) }
             }
-            .navigationTitle(existing == nil ? (isExpense ? "Add expense" : isPaycheck ? "Paycheck" : isBalanceAdjustment ? "Balance adjustment" : "Add income") : "Edit transaction")
+            .navigationTitle(existing == nil ? (isExpense ? "Add a scoop" : isPaycheck ? "Paycheck" : isBalanceAdjustment ? "Balance adjustment" : "Add income") : "Edit transaction")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) { Button("Save") { save() }.fontWeight(.semibold) }
@@ -155,7 +155,7 @@ struct CategoryManagerView: View {
                         ForEach(ledger.data.categories.filter { $0.id != category.id }) { target in Button("Move transactions to \(target.name)") { ledger.deleteCategory(category, reassignTo: target.id); categoryToDelete = nil } }
                         Button("Cancel", role: .cancel) { categoryToDelete = nil }
                     }
-                } message: { Text("Existing expenses will be assigned to another category.") }
+                } message: { Text("Existing scoops will be assigned to another category.") }
         }
     }
 }
@@ -172,7 +172,7 @@ struct CategoryEditorView: View {
         NavigationStack {
             Form {
                 Section { TextField("Category name", text: $name) }
-                Section("Icon") { LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 5)) { ForEach(icons, id: \.self) { symbol in Button { icon = symbol } label: { Image(systemName: symbol).font(.title3).frame(width: 44, height: 44).foregroundStyle(icon == symbol ? .white : Color(hex: 0x286B58)).background(icon == symbol ? Color(hex: 0x286B58) : Color(hex: 0xE8F2ED), in: RoundedRectangle(cornerRadius: 12)) } } }.padding(.vertical, 8) }
+                Section("Icon") { LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 5)) { ForEach(icons, id: \.self) { symbol in Button { icon = symbol } label: { Image(systemName: symbol).font(.title3).frame(width: 44, height: 44).foregroundStyle(icon == symbol ? .white : Color(hex: 0x14203D)).background(icon == symbol ? Color(hex: 0x14203D) : Color(hex: 0xF4EBD5), in: RoundedRectangle(cornerRadius: 12)) } } }.padding(.vertical, 8) }
                 if let error { Text(error).foregroundStyle(.red).font(.caption) }
             }.navigationTitle(existing == nil ? "New category" : "Edit category").toolbar { ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }; ToolbarItem(placement: .confirmationAction) { Button("Save") { save() } } }.onAppear { if let existing { name = existing.name; icon = existing.icon } }
         }

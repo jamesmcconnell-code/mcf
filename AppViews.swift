@@ -20,7 +20,7 @@ struct RootView: View {
                 NavigationStack { TransactionsView() }
                     .tabItem { Label("Activity", systemImage: "list.bullet.rectangle") }
                 NavigationStack { SpendingView() }
-                    .tabItem { Label("Spending", systemImage: "chart.pie.fill") }
+                    .tabItem { Label("Scoops", systemImage: "chart.pie.fill") }
                 NavigationStack { PeriodsView() }
                     .tabItem { Label("Periods", systemImage: "calendar") }
                 NavigationStack { SettingsView() }
@@ -62,33 +62,33 @@ struct OverviewView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("AVAILABLE CASH").font(.caption.weight(.bold)).tracking(1.3).foregroundStyle(.white.opacity(0.78))
                     Text(Money.string(ledger.balanceCents, currency: ledger.data.currencyCode)).font(.system(size: 38, weight: .bold, design: .rounded)).foregroundStyle(.white).minimumScaleFactor(0.7).lineLimit(1)
-                    Label(ledger.activePeriod == nil ? "Ready when you are" : "Money carries forward", systemImage: "arrow.right.circle.fill").font(.subheadline).foregroundStyle(.white.opacity(0.82))
+                    Label(ledger.activePeriod == nil ? "Ready when you are" : "Scoop money out, carry the rest forward", systemImage: "arrow.right.circle.fill").font(.subheadline).foregroundStyle(.white.opacity(0.82))
                 }
                 .padding(22).frame(maxWidth: .infinity, alignment: .leading)
-                .background(LinearGradient(colors: [Color(hex: 0x286B58), Color(hex: 0x194C43)], startPoint: .topLeading, endPoint: .bottomTrailing), in: RoundedRectangle(cornerRadius: 24))
+                .background(LinearGradient(colors: [Color(hex: 0x253654), Color(hex: 0x10182D)], startPoint: .topLeading, endPoint: .bottomTrailing), in: RoundedRectangle(cornerRadius: 24))
 
                 VStack(alignment: .leading, spacing: 14) {
                     HStack { Text("This pay period").font(.title3.bold()); Spacer(); if let period = ledger.activePeriod { Text(period.startDate.formatted(date: .abbreviated, time: .omitted)).font(.caption).foregroundStyle(.secondary) } }
                     HStack(spacing: 10) {
-                        MetricCard(title: "Paycheck", amount: ledger.currentPaycheckCents, currency: ledger.data.currencyCode, icon: "briefcase.fill", tint: Color(hex: 0x286B58))
-                        MetricCard(title: "Extra income", amount: ledger.additionalIncomeCents, currency: ledger.data.currencyCode, icon: "plus.circle.fill", tint: .blue)
+                        MetricCard(title: "Paycheck", amount: ledger.currentPaycheckCents, currency: ledger.data.currencyCode, icon: "briefcase.fill", tint: Color(hex: 0x14203D))
+                        MetricCard(title: "Extra income", amount: ledger.additionalIncomeCents, currency: ledger.data.currencyCode, icon: "plus.circle.fill", tint: Color(hex: 0x43587B))
                     }
                     HStack(spacing: 10) {
-                        MetricCard(title: "Total income", amount: ledger.currentIncomeCents, currency: ledger.data.currencyCode, icon: "arrow.down.left", tint: Color(hex: 0x286B58))
-                        MetricCard(title: "Expenses", amount: ledger.currentExpensesCents, currency: ledger.data.currencyCode, icon: "arrow.up.right", tint: .orange)
+                        MetricCard(title: "Total income", amount: ledger.currentIncomeCents, currency: ledger.data.currencyCode, icon: "arrow.down.left", tint: Color(hex: 0x14203D))
+                        MetricCard(title: "Scoops out", amount: ledger.currentExpensesCents, currency: ledger.data.currencyCode, icon: "arrow.up.right", tint: Color(hex: 0xD49B4A))
                     }
                     MetricCard(title: "Net remaining", amount: ledger.currentNetCents, currency: ledger.data.currencyCode, icon: "equal.circle.fill", tint: .primary)
                 }
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Quick actions").font(.title3.bold())
                     HStack(spacing: 10) {
-                        ActionButton(title: "Add expense", icon: "minus", color: Color(hex: 0x286B58)) { showExpense = true }
-                        ActionButton(title: "Add income", icon: "plus", color: .blue) { showIncome = true }
+                        ActionButton(title: "Add a scoop", icon: "minus", color: Color(hex: 0x14203D)) { showExpense = true }
+                        ActionButton(title: "Add income", icon: "plus", color: Color(hex: 0x43587B)) { showIncome = true }
                     }
                     Button { showPeriod = true } label: {
                         Label(ledger.activePeriod == nil ? "Start your first pay period" : "Start a new pay period", systemImage: "arrow.clockwise")
                             .font(.subheadline.weight(.semibold)).frame(maxWidth: .infinity).padding(14)
-                            .background(Color(hex: 0xE8F2ED), in: RoundedRectangle(cornerRadius: 14))
+                            .background(Color(hex: 0xF4EBD5), in: RoundedRectangle(cornerRadius: 14))
                     }
                 }
                 VStack(alignment: .leading, spacing: 10) {
@@ -98,8 +98,8 @@ struct OverviewView: View {
                 }
             }.padding(18)
         }
-        .background(Color(hex: 0xF6F7F5))
-        .navigationTitle("Cash Flow")
+        .background(Color(hex: 0xFFFAEF))
+        .navigationTitle("Scoops Cash Flow")
     }
 }
 
@@ -178,7 +178,7 @@ struct TransactionRow: View {
     }
     var body: some View {
         HStack(spacing: 12) {
-            Image(systemName: icon).font(.system(size: 15, weight: .semibold)).foregroundStyle(isExpense ? .orange : Color(hex: 0x286B58)).frame(width: 40, height: 40).background((isExpense ? Color.orange : Color(hex: 0x286B58)).opacity(0.1), in: Circle())
+            Image(systemName: icon).font(.system(size: 15, weight: .semibold)).foregroundStyle(isExpense ? Color(hex: 0xD49B4A) : Color(hex: 0x14203D)).frame(width: 40, height: 40).background((isExpense ? Color(hex: 0xD49B4A) : Color(hex: 0x14203D)).opacity(0.1), in: Circle())
             VStack(alignment: .leading, spacing: 3) {
                 Text(transaction.title).font(.subheadline.weight(.semibold)).lineLimit(1)
                 Text(isExpense ? ledger.categoryName(transaction.categoryID) : transaction.kind.title).font(.caption).foregroundStyle(.secondary)
@@ -204,16 +204,16 @@ struct SpendingView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 Picker("Range", selection: $useAllHistory) { Text("This period").tag(false); Text("All history").tag(true) }.pickerStyle(.segmented)
-                VStack(alignment: .leading, spacing: 5) { Text(useAllHistory ? "All spending" : "Period spending").font(.subheadline).foregroundStyle(.secondary); Text(Money.string(total, currency: ledger.data.currencyCode)).font(.largeTitle.bold()).monospacedDigit() }
+                VStack(alignment: .leading, spacing: 5) { Text(useAllHistory ? "All scoops" : "Scoops this period").font(.subheadline).foregroundStyle(.secondary); Text(Money.string(total, currency: ledger.data.currencyCode)).font(.largeTitle.bold()).monospacedDigit() }
                     .padding(18).frame(maxWidth: .infinity, alignment: .leading).background(.background, in: RoundedRectangle(cornerRadius: 20))
-                if rows.isEmpty { EmptyState(icon: "chart.pie", title: "Nothing to analyze yet", message: "Expenses will appear here by category.") }
+                if rows.isEmpty { EmptyState(icon: "chart.pie", title: "Nothing to analyze yet", message: "Your scoops will appear here by category.") }
                 else {
                     Chart { ForEach(rows) { row in SectorMark(angle: .value(row.category.name, row.amountCents), innerRadius: .ratio(0.62), angularInset: 2).foregroundStyle(by: .value("Category", row.category.name)) } }
                         .frame(height: 220).padding(10).background(.background, in: RoundedRectangle(cornerRadius: 20))
                     VStack(spacing: 0) {
                         ForEach(rows) { row in
                             NavigationLink { CategoryTransactionsView(category: row.category, useAllHistory: useAllHistory) } label: {
-                                HStack(spacing: 12) { Image(systemName: row.category.icon).foregroundStyle(Color(hex: 0x286B58)).frame(width: 34); Text(row.category.name).font(.subheadline.weight(.medium)); Spacer(); VStack(alignment: .trailing, spacing: 3) { Text(Money.string(row.amountCents, currency: ledger.data.currencyCode)).font(.subheadline.weight(.semibold)); Text(total > 0 ? "\(Int((Double(row.amountCents) / Double(total) * 100).rounded()))%" : "0%").font(.caption).foregroundStyle(.secondary) } }
+                                HStack(spacing: 12) { Image(systemName: row.category.icon).foregroundStyle(Color(hex: 0x14203D)).frame(width: 34); Text(row.category.name).font(.subheadline.weight(.medium)); Spacer(); VStack(alignment: .trailing, spacing: 3) { Text(Money.string(row.amountCents, currency: ledger.data.currencyCode)).font(.subheadline.weight(.semibold)); Text(total > 0 ? "\(Int((Double(row.amountCents) / Double(total) * 100).rounded()))%" : "0%").font(.caption).foregroundStyle(.secondary) } }
                                     .padding(14).contentShape(Rectangle())
                             }.buttonStyle(.plain)
                             if row.id != rows.last?.id { Divider().padding(.leading, 58) }
@@ -221,7 +221,7 @@ struct SpendingView: View {
                     }.background(.background, in: RoundedRectangle(cornerRadius: 20))
                 }
             }.padding(18)
-        }.background(Color(hex: 0xF6F7F5)).navigationTitle("Spending")
+        }.background(Color(hex: 0xFFFAEF)).navigationTitle("Scoops")
     }
 }
 
@@ -242,12 +242,12 @@ struct PeriodsView: View {
             ForEach(ledger.data.periods.sorted { $0.startDate > $1.startDate }) { period in
                 NavigationLink { PeriodDetailView(period: period) } label: {
                     VStack(alignment: .leading, spacing: 8) {
-                        HStack { Text(period.isClosed ? "Pay period" : "Current period").font(.headline); Spacer(); Text(period.isClosed ? "Closed" : "Active").font(.caption.weight(.semibold)).foregroundStyle(period.isClosed ? .secondary : Color(hex: 0x286B58)) }
+                        HStack { Text(period.isClosed ? "Pay period" : "Current period").font(.headline); Spacer(); Text(period.isClosed ? "Closed" : "Active").font(.caption.weight(.semibold)).foregroundStyle(period.isClosed ? .secondary : Color(hex: 0x14203D)) }
                         Text(period.startDate.formatted(date: .abbreviated, time: .omitted) + (period.endDate.map { " – " + $0.formatted(date: .abbreviated, time: .omitted) } ?? " – Present")).font(.caption).foregroundStyle(.secondary)
                         let transactions = ledger.periodTransactions(period)
                         let income = transactions.filter { $0.kind == .paycheck || $0.kind == .income }.reduce(Int64(0)) { $0 + $1.amountCents }
                         let expenses = transactions.filter { $0.kind == .expense }.reduce(Int64(0)) { $0 + $1.amountCents }
-                        Text("Income \(Money.string(income, currency: ledger.data.currencyCode))  ·  Spent \(Money.string(expenses, currency: ledger.data.currencyCode))").font(.caption).lineLimit(1).minimumScaleFactor(0.8)
+                        Text("Income \(Money.string(income, currency: ledger.data.currencyCode))  ·  Scooped out \(Money.string(expenses, currency: ledger.data.currencyCode))").font(.caption).lineLimit(1).minimumScaleFactor(0.8)
                     }.padding(.vertical, 5)
                 }
             }
@@ -267,10 +267,10 @@ struct PeriodDetailView: View {
                 LabeledContent("Starting available cash", value: Money.string(ledger.periodStartingCash(period), currency: ledger.data.currencyCode))
                 LabeledContent("Paycheck", value: Money.string(income.filter { $0.kind == .paycheck }.reduce(0) { $0 + $1.amountCents }, currency: ledger.data.currencyCode))
                 LabeledContent("Additional income", value: Money.string(income.filter { $0.kind == .income }.reduce(0) { $0 + $1.amountCents }, currency: ledger.data.currencyCode))
-                LabeledContent("Expenses", value: Money.string(expenses.reduce(0) { $0 + $1.amountCents }, currency: ledger.data.currencyCode))
+                LabeledContent("Scoops out", value: Money.string(expenses.reduce(0) { $0 + $1.amountCents }, currency: ledger.data.currencyCode))
                 LabeledContent("Ending available cash", value: Money.string(ledger.periodEndingCash(period), currency: ledger.data.currencyCode))
             }
-            Section("Spending by category") {
+            Section("Scoops by category") {
                 ForEach(ledger.data.categories) { category in
                     let amount = expenses.filter { $0.categoryID == category.id }.reduce(Int64(0)) { $0 + $1.amountCents }
                     if amount > 0 { LabeledContent(category.name, value: Money.string(amount, currency: ledger.data.currencyCode)) }
@@ -296,7 +296,7 @@ struct SettingsView: View {
                 NavigationLink { CurrencyView() } label: { LabeledContent("Currency", value: ledger.data.currencyCode) }
                 LabeledContent("Original opening cash", value: Money.string(ledger.data.openingBalanceCents, currency: ledger.data.currencyCode))
                 Button { showBalanceAdjustment = true } label: { Label("Record balance adjustment", systemImage: "arrow.left.arrow.right") }
-                Button { showCategories = true } label: { Label("Expense categories", systemImage: "tag") }
+                Button { showCategories = true } label: { Label("Scoop categories", systemImage: "tag") }
             }
             Section("Security") {
                 Toggle("Require Face ID, Touch ID, or passcode", isOn: Binding(
@@ -343,7 +343,7 @@ struct PrivacyPolicyView: View {
     var body: some View {
         List {
             Section("Data stored on your device") {
-                Text("Cash Flow stores the opening balance, income, expenses, categories, and pay period history in the app’s local data directory. The app has no bank connection, account sign-in, advertising, analytics, or financial data service.")
+                Text("Scoops Cash Flow stores the opening balance, income, scoops (expenses), categories, and pay period history in the app’s local data directory. The app has no bank connection, account sign-in, advertising, analytics, or financial data service.")
             }
             Section("Data sharing and backups") {
                 Text("The app does not send your ledger to the developer or a third-party server. iOS device backups may include this app’s local data according to your device backup settings. If you choose Export ledger backup, iOS opens the system sharing interface so you can save or share a JSON copy. The destination you choose may store or transmit that copy under its own privacy practices.")
@@ -353,7 +353,7 @@ struct PrivacyPolicyView: View {
             }
             Section("Security") {
                 Text("The ledger file uses iOS Complete Data Protection. iOS stores it encrypted and makes it inaccessible to the app while the device is locked. An exported backup is outside the app’s protection, so choose a destination you trust.")
-                Text("Optional app lock uses Apple’s device authentication. Cash Flow does not receive or store Face ID or Touch ID data.")
+                Text("Optional app lock uses Apple’s device authentication. Scoops Cash Flow does not receive or store Face ID or Touch ID data.")
             }
             Section("Contact") {
                 Link("jamesmcconnellemail@gmail.com", destination: URL(string: "mailto:jamesmcconnellemail@gmail.com")!)
@@ -389,5 +389,5 @@ struct CurrencyView: View {
 
 struct EmptyState: View {
     let icon: String; let title: String; let message: String
-    var body: some View { VStack(spacing: 8) { Image(systemName: icon).font(.system(size: 28)).foregroundStyle(Color(hex: 0x286B58)); Text(title).font(.headline); Text(message).font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center) }.frame(maxWidth: .infinity).padding(28).background(.background, in: RoundedRectangle(cornerRadius: 18)) }
+    var body: some View { VStack(spacing: 8) { Image(systemName: icon).font(.system(size: 28)).foregroundStyle(Color(hex: 0x14203D)); Text(title).font(.headline); Text(message).font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center) }.frame(maxWidth: .infinity).padding(28).background(.background, in: RoundedRectangle(cornerRadius: 18)) }
 }

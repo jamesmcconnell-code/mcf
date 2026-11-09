@@ -6,7 +6,7 @@ enum TransactionKind: String, Codable, CaseIterable, Identifiable, Hashable {
     var id: String { rawValue }
     var title: String {
         switch self {
-        case .expense: "Expense"
+        case .expense: "Scoop"
         case .paycheck: "Paycheck"
         case .income: "Income"
         case .balanceAdjustment: "Balance adjustment"

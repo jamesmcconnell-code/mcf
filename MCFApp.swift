@@ -8,7 +8,7 @@ struct MCFApp: App {
         WindowGroup {
             RootView()
                 .environmentObject(ledger)
-                .tint(Color(red: 0.157, green: 0.42, blue: 0.345))
+                .tint(Color(hex: 0x14203D))
         }
     }
 }
