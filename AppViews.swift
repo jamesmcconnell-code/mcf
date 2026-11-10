@@ -357,7 +357,8 @@ struct PrivacyPolicyView: View {
             }
             Section("Contact") {
                 Link("jamesmcconnellemail@gmail.com", destination: URL(string: "mailto:jamesmcconnellemail@gmail.com")!)
-                Text("A public support and privacy-policy website URL will be added before App Store submission.").font(.caption).foregroundStyle(.secondary)
+                Link("Full privacy policy", destination: URL(string: "https://main--scoops--jamesmcconnell-code.aem.live/#privacy-policy")!)
+                Link("Support website", destination: URL(string: "https://main--scoops--jamesmcconnell-code.aem.live/#support")!)
             }
         }
         .navigationTitle("Privacy policy")

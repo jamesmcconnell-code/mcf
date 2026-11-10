@@ -1,7 +1,9 @@
-# Scoops Cash Flow Privacy Policy — Draft
+# Scoops Cash Flow Privacy Policy
 
 **Effective date:** November 8, 2026  
-**Release status:** Draft. Publish this document at a public URL before App Store submission and keep its disclosures aligned with the released app.
+**Public URL:** https://main--scoops--jamesmcconnell-code.aem.live/#privacy-policy
+
+**Support URL:** https://main--scoops--jamesmcconnell-code.aem.live/#support
 
 Scoops Cash Flow is a personal cash-flow tracking app. This policy describes the current app implementation. Update it if the app’s data practices change.
 
@@ -29,4 +31,6 @@ Your ledger stays in the app until you delete it. Use **Settings → Delete all 
 
 **Developer support email:** [jamesmcconnellemail@gmail.com](mailto:jamesmcconnellemail@gmail.com)
 
-**Public privacy policy URL:** To be added after the policy is published on the developer’s website.
+**Privacy policy:** [Read the full privacy policy](https://main--scoops--jamesmcconnell-code.aem.live/#privacy-policy)
+
+**Support:** [Visit the Scoops support page](https://main--scoops--jamesmcconnell-code.aem.live/#support)

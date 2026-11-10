@@ -17,13 +17,13 @@
 ## Still needed before submission
 
 - [ ] Ask Apple Developer Support whether Apple’s financial-app rule applies to this offline personal ledger. App Review Guideline 3.2.1(viii) mentions money-management apps.
-- [ ] Enroll in the Apple Developer Program and choose an individual or eligible organization account.
+- [x] Purchase Apple Developer Program membership (reported by user); confirm enrollment is active in App Store Connect.
 - [x] Set the Bundle ID to the user-provided `com.mcf.scoops`.
 - [x] Choose the public name Scoops and in-app brand Scoops Cash Flow.
-- [ ] Choose the seller identity for developer enrollment.
+- [ ] Confirm the seller name shown in the active developer account.
 - [ ] Confirm the support email is monitored and keep the contact details current.
-- [ ] Publish the privacy policy at a public URL and add the URL to App Store Connect.
-- [ ] Provide a public support URL with contact information.
+- [x] Add the provided public privacy-policy and support URLs to the draft metadata and in-app privacy screen.
+- [ ] Confirm both public pages load and contain the current policy/contact details; enter their URLs in App Store Connect.
 - [ ] Test Face ID/passcode lock behavior on a real iPhone and in a simulator.
 - [ ] Test the complete ledger flows on supported iOS versions and devices, including persistence, adjustments, period boundaries, edit/delete, negative balances, and backup export.
 - [ ] Run TestFlight with external testers and fix the issues they find.
