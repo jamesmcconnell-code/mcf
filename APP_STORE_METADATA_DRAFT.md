@@ -10,23 +10,24 @@ Use this as a starting point in App Store Connect. Confirm the app name is avail
 
 **Description:**
 
-Your paycheck is the start. Each expense is a scoop out of the cash you have available.
+Scoops Cash Flow is a manual ledger for keeping a running tally of the income and expenses you enter. Start with an opening balance, record paychecks and other income, and log each expense as a scoop.
 
-Scoops Cash Flow helps you record income and spending, see what remains in your current pay period, and keep track of cash that carries forward. Pay periods are yours to start whenever you choose—your available cash never resets automatically.
+See the balance calculated from your entries, review totals for a pay period, and look back at past periods and spending by category. Pay periods start when you choose; Scoops does not connect to a bank or automatically import or verify transactions.
 
 With Scoops, you can:
 
 - Set an opening balance and choose a currency
-- Record paychecks and additional income
-- Add, edit, categorize, backdate, or delete scoops
-- See running available cash and current-period totals
+- Record paychecks and other income
+- Add, edit, categorize, backdate, or delete expense entries (“scoops”)
+- Record a dated balance adjustment
+- View the running balance and pay-period totals based on your entries
 - Review past pay periods and spending by category
 - Export a JSON ledger backup
 - Optionally lock the app with Face ID, Touch ID, or your device passcode
 
-Your ledger is stored on your device. Scoops does not connect to banks or send your financial data to a developer or third-party server.
+Your ledger is stored on your device. Scoops does not connect to financial accounts or send your ledger to the developer or a third-party server. If you export a backup, you choose where it is saved or shared.
 
-Scoops is a personal record-keeping tool. It does not provide financial, tax, investment, or legal advice.
+Scoops is a manual record-keeping and arithmetic tool. It does not provide financial, tax, investment, or legal advice, or recommend financial decisions.
 
 **Keywords:** budget,expenses,spending,paycheck,cash,balance,ledger,tracker
 

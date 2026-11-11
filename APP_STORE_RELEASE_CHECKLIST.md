@@ -17,7 +17,7 @@
 ## Still needed before submission
 
 - [ ] Ask Apple Developer Support whether Apple’s financial-app rule applies to this offline personal ledger. App Review Guideline 3.2.1(viii) mentions money-management apps.
-- [x] Purchase Apple Developer Program membership (reported by user); confirm enrollment is active in App Store Connect.
+- [x] Purchase Apple Developer Program membership and validate the developer account (reported by user).
 - [x] Set the Bundle ID to the user-provided `com.mcf.scoops`.
 - [x] Choose the public name Scoops and in-app brand Scoops Cash Flow.
 - [ ] Confirm the seller name shown in the active developer account.
